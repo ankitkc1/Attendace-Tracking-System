@@ -3,8 +3,11 @@
 this project can be used to track attendence of a person in an institute.
 
 This project uses python libraries
+
 i)   Flask
+
 ii)  Face_recognition
+
 iii) numpy
 iv)  pandas
 v)   cv2
