@@ -1,3 +1,4 @@
+#required imports for application
 import cv2
 import numpy as np
 import face_recognition
@@ -5,6 +6,7 @@ import os
 from datetime import datetime
 
 
+#function to encode photos and mark attendence
 def attendence():
     marked = False
     path = 'images'
@@ -18,6 +20,7 @@ def attendence():
         classNames.append(os.path.splitext(cl)[0])
     print(classNames)
     
+    #for encoding
     def findEncodings(images):
         encodeList = []
         for img in images:
@@ -26,6 +29,7 @@ def attendence():
             encodeList.append(encode)
         return encodeList
     
+    #for marking attendence
     def markAttendance(name):
         with open('attendence.csv','r+') as f:
             myDataList = f.readlines()
@@ -38,7 +42,12 @@ def attendence():
                 dtString = now.strftime('%H:%M:%S')
                 dateString = now.strftime('%d / %m / %Y')
                 f.writelines(f'\n{name},{dtString},{dateString}')
-            return True
+                print("inside marking")
+                return True
+            else:
+                print("somethin wring")
+                return False
+            
             
     encodeListKnown = findEncodings(images)
     print('Encoding Complete') 
